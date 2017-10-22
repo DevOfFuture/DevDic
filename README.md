@@ -1,13 +1,14 @@
-﻿# Dev Dic
+﻿# DevDic
 
-A programming dictionary for programmers. This bot can teach you almost everything about almost any language by showing you the language meaning and suggest good important links to follow along.
+> DevDic is a programming dictionary for Developers by Developers. This Bot can teach you almost everything about almost 
+> any programming language by showing you the language meaning and also suggest good important links/tutorials to learn.
 
 ### Setting up the project
 
 #### Requiremets:
 
  - PHP >= 5.6.4
- - composer
+ - Composer
 
  1. Clone the repository
 
@@ -34,4 +35,4 @@ Change the content of .env to your configuration settings
    php -S localhost:9999 -t public
 ```
 
-5. Relax on contrbute to the project :fire:
+5. Relax on contribute to the project :fire:
