@@ -35,4 +35,4 @@ Change the content of .env to your configuration settings
    php -S localhost:9999 -t public
 ```
 
-5. Relax on contribute to the project :fire:
+5. Relax and contribute to the project :fire:
