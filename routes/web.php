@@ -12,5 +12,5 @@
 */
 
 $router->get('/', function () use ($router) {
-    return "Welcome to DevDic!";
+    return "Welcome to DevDic! :)";
 });
