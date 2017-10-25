@@ -15,4 +15,15 @@ $router->get('/', function () use ($router) {
     return "Welcome to DevDic! :)";
 });
 
-$router->get('/webhook', 'VerificationController@index');
+
+//===
+// Routes to every request concerning facebook
+//===
+
+$router->group(['prefix' => 'fbwebhook'], function () use ($router) {
+    
+    // For initial verification of endpoint
+
+    $router->get('/verify', 'VerificationController@fbChallenge');
+
+});

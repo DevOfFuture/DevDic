@@ -18,6 +18,13 @@ class VerificationController extends Controller
 
     public function index(Request $request)
     {
+        // $data = $request->input('hub_challenge');
+
+        // return $data;
+    }
+
+    public function fbChallenge(Request $request)
+    {
         $data = $request->input('hub_challenge');
 
         return $data;
