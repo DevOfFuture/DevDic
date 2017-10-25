@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Helpers\FbMessengerHelper;
 
-class FbDevDictController extends Controllser
+class FbDevDictController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -28,5 +29,26 @@ class FbDevDictController extends Controllser
         
         return $data;
     }
+    
+    public function handleQuery(Request $request)
+    {
+       
+       $entry = $request->get('entry');
 
+       $sender_id = array_get($entry, '0.messaging.0.sender');
+
+       // $recipient_id = array_get($entry, '0.messaging.0.recipient');
+
+       $message = array_get($entry, '0.messaging.0.message.text');
+
+       // TODO: act on the message and reply...
+
+       FbMessengerHelper::replyMessage([
+           "id"      => $sender_id,
+           "message" => $message
+       ]);
+
+       return response('', 200);
+
+    }
 }
