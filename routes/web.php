@@ -24,6 +24,6 @@ $router->group(['prefix' => 'fbwebhook'], function () use ($router) {
     
     // For initial verification of endpoint
 
-    $router->get('/', 'VerificationController@fbChallenge');
+    $router->get('/', 'FbDevDictController@index');
 
 });
