@@ -14,3 +14,5 @@
 $router->get('/', function () use ($router) {
     return "Welcome to DevDic! :)";
 });
+
+$router->get('/webhook', 'VerificationController@index');
