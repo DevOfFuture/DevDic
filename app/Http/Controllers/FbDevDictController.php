@@ -30,25 +30,35 @@ class FbDevDictController extends Controller
         return $data;
     }
     
+    public function verify(Request $request)
+    {
+       // TODO: make sure request is comming from facebook
+       
+       if( $request->get('hub_mode') == 'subscribe' ){
+          
+            $hub_challenge = $request->get('hub_challenge');
+
+            return response($hub_challenge, 200);
+       }
+
+       return response('Something went wrong', 400);
+
+    }
+
     public function handleQuery(Request $request)
     {
-       
+
        $entry = $request->get('entry');
 
-       $sender_id = array_get($entry, '0.messaging.0.sender');
-
-       // $recipient_id = array_get($entry, '0.messaging.0.recipient');
+       $sender_id = array_get($entry, '0.messaging.0.sender.id');
 
        $message = array_get($entry, '0.messaging.0.message.text');
 
        // TODO: act on the message and reply...
 
-       FbMessengerHelper::replyMessage([
-           "id"      => $sender_id,
-           "message" => $message
-       ]);
+       $result = FbMessengerHelper::replyMessage($sender_id, "You said  ". $message . '?');
 
-       return response('', 200);
+       return response($result, 200);
 
     }
 }

@@ -16,7 +16,7 @@ class Requester extends Client
 
         // Create client configuration
         $config = array_merge($config, $default);
-        // dd($config);
+
         return ( new Client($config) );
     }
 

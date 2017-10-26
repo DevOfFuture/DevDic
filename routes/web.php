@@ -22,6 +22,8 @@ $router->get('/', function () use ($router) {
 
 $router->group(['prefix' => 'fbwebhook'], function () use ($router) {
 
-    $router->get('/', 'FbDevDictController@handleQuery');
+    $router->get('/', 'FbDevDictController@verify');
+
+    $router->post('/', 'FbDevDictController@handleQuery');
 
 });
