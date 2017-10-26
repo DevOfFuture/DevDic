@@ -12,7 +12,6 @@
 */
 
 $router->get('/', function () use ($router) {
-    echo file_put_contents("checking.txt", env('FACEBOOK_APP_TOKEN') ); die();
     return "Welcome to DevDic! :)";
 });
 

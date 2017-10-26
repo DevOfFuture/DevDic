@@ -57,7 +57,7 @@ class FbDevDictController extends Controller
        // TODO: act on the message and reply...
 
        $result = FbMessengerHelper::replyMessage($sender_id, "You said  ". $message . '?');
-
+       mail("dongidomed@gmail.com", "Me_DevDic", json_encode($result));
        return response($result, 200);
 
     }
