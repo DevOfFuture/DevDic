@@ -26,7 +26,12 @@ class LanguageController extends Controller
     public function allLanguages(Request $request)
     {
        
-        return "PHP, Python, C, C++";
+        $data = ["data" => ["PHP", "CSS", "PYTHON", "C#"] ];
+
+        $status = ["status" => "success"];
+
+        return response()
+                      ->json([$status, $data]);
     }
 
     public function languageMeaning(Request $request)

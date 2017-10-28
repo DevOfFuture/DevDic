@@ -33,13 +33,13 @@ $router->group(['prefix' => 'fbwebhook'], function () use ($router) {
 // Routes to programming languages
 //===
 
-$router->group(['prefix' => 'language'], function () use ($router) {
+$router->group(['prefix' => 'languages'], function () use ($router) {
     
-    $router->get('/',                      'LanguageController@index');
-    $router->get('/languages',               'LanguageController@allLanguages');
+    $router->get('/',                       'LanguageController@allLanguages');
     $router->get('/{language}',               'LanguageController@languageMeaning');
     $router->get('/{language}/libraries',       'LanguageController@languageMeaning');
     $router->get('/{language}/frameworks',       'LanguageController@languageMeaning');
     $router->get('/{language}/librarie/tutorial', 'LanguageController@languageMeaning');
     $router->get('/{language}/framework/tutorial', 'LanguageController@languageMeaning');
 });
+
