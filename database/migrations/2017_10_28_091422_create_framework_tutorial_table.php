@@ -19,8 +19,10 @@ class CreateFrameworkTutorialTable extends Migration
             $table->string('tutorial_link')->nullable();
             $table->string('tutorial_article')->nullable();
             $table->timestamps();
-        });
 
+            $table->foreign('framework_id')->references('id')->on('frameworks');
+        });
+        
         Schema::disableForeignKeyConstraints();
     }
 
