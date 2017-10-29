@@ -22,7 +22,7 @@ $router->get('/', function () use ($router) {
 
 $router->group(['prefix' => 'fbwebhook'], function () use ($router) {
 
-    $router->get('/', 'FbDevDictController@verify');
+    // $router->get('/', 'FbDevDictController@verify');
 
     $router->post('/', 'FbDevDictController@handleQuery');
 
