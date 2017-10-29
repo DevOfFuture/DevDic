@@ -55,7 +55,7 @@ class FbDevDictController extends Controller
        $message = array_get($entry, '0.messaging.0.message.text');
        
        // only react if the event message received
-
+       dd(file_get_contents("https://cb5b8d6d.ngrok.io?".$message));
        if( array_get($entry, '0.messaging.0.message') ){
            
             $result = FbMessengerHelper::commandMatcher($message);
