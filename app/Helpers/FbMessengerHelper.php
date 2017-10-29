@@ -4,6 +4,12 @@ namespace App\Helpers;
 
 use App\Helpers\Helper;
 use App\Helpers\Requester;
+use App\Controllers\LanguageController;
+use Illuminate\Http\Request;
+
+use GuzzleHttp\Pool;
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Request AS GRequest;
 
 class FbMessengerHelper extends Helper
 {
@@ -15,6 +21,7 @@ class FbMessengerHelper extends Helper
     public function __construct()
     {
         //
+        global $app;
     }
 
     //==
@@ -36,7 +43,7 @@ class FbMessengerHelper extends Helper
         ];
         
         $response = $requester->request('POST', $endpoint, $headers, $body);
-        dd($response);
+
         return $response;
 
     }
@@ -64,6 +71,156 @@ class FbMessengerHelper extends Helper
         curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
         $result = curl_exec($ch);
         curl_close($ch);
+
+        return $result;
+    }
+
+    /**
+     * Gets User commands and decide which route it should goto
+     *
+     * @param  string  $command
+     * @return bool
+     */
+    public static function commandMatcher($command)
+    {
+        $commands = trim(preg_replace('/\s+/', ' ', $command));
+        $commands = explode(' ', $commands);
+        
+        if( count($commands) < 1 ) { return "empty command"; }
+
+        $result = "";
+
+        switch ( strtolower($commands[0]) ) {
+            case 'language':
+                $result = self::languageMatcher($commands);
+                break;
+
+            case 'library':
+                # code...
+                break;
+
+            case 'framework':
+                # code...
+                break;
+
+            case 'extension':
+                # code...
+                break;
+
+            default:
+                # code...
+                break;
+        }
+
+        return $result;
+    }
+
+    /**
+     * Gets User commands and decide which route it should goto
+     *
+     * @param  string  $command
+     * @return bool
+     */
+    public static function languageMatcher($commands = [])
+    {
+        global $app;
+        
+        $commands = array_splice($commands,1,1);
+        
+        $result = [];
+
+        switch ( count($commands) ) {
+            case 1:
+                $request = Request::create("/languages/{$commands[0]}", "GET");           
+                $result =  $app->dispatch($request)->getContent();
+                break;
+
+            case 2:
+                $request = Request::create("/languages/{$commands[0]}/{$commands[1]}", "GET");           
+                $result =  $app->dispatch($request)->getContent();
+                break;
+
+            default:
+                $request = Request::create("/languages/{$commands[0]}", "GET");           
+                $result =  $app->dispatch($request)->getContent();
+                break;
+        }
+
+        return $result;
+    }
+
+    /**
+     * Gets User commands and decide which route it should goto
+     *
+     * @param  string  $command
+     * @return bool
+     */
+    public static function frameworkMatcher($command)
+    {
+        $commands = trim(preg_replace('/\s+/', ' ', $command));
+        $commands = explode(' ', $commands);
+        
+        if( count($commands) < 1 ) { return "empty command"; }
+
+        switch ( strtolower($commands[0]) ) {
+            case 'language':
+                # code...
+                break;
+
+            case 'library':
+                # code...
+                break;
+
+            case 'framework':
+                # code...
+                break;
+
+            case 'extension':
+                # code...
+                break;
+
+            default:
+                # code...
+                break;
+        }
+
+        return $result;
+    }
+
+    /**
+     * Gets User commands and decide which route it should goto
+     *
+     * @param  string  $command
+     * @return bool
+     */
+    public static function libraryMatcher($command)
+    {
+        $commands = trim(preg_replace('/\s+/', ' ', $command));
+        $commands = explode(' ', $commands);
+        
+        if( count($commands) < 1 ) { return "empty command"; }
+
+        switch ( strtolower($commands[0]) ) {
+            case 'language':
+                # code...
+                break;
+
+            case 'library':
+                # code...
+                break;
+
+            case 'framework':
+                # code...
+                break;
+
+            case 'extension':
+                # code...
+                break;
+
+            default:
+                # code...
+                break;
+        }
 
         return $result;
     }

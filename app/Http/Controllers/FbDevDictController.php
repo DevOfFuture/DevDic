@@ -53,13 +53,14 @@ class FbDevDictController extends Controller
        $sender_id = array_get($entry, '0.messaging.0.sender.id');
 
        $message = array_get($entry, '0.messaging.0.message.text');
-
-       // TODO: act on the message and reply...
        
-       // only react if the event is message received
+       // only react if the event message received
+
        if( array_get($entry, '0.messaging.0.message') ){
            
-            $result = FbMessengerHelper::replyMessage($sender_id, "You said  ". $message . '?');
+            $result = FbMessengerHelper::commandMatcher($message);
+
+            FbMessengerHelper::replyMessage($sender_id, $result);
        }
 
        return response('', 200);
