@@ -55,7 +55,7 @@ $router->group(['prefix' => 'languages'], function () use ($router) {
     $router->post('/{language}/frameworks/{framework}/update','FrameworkController@update');
     $router->post('/{language}/frameworks/{framework}/delete', 'FrameworkController@delete');
 
-    $router->post('/{language}/librarie/tutorial', 'LanguageController@languageMeaning');
-    $router->post('/{language}/framework/tutorial', 'LanguageController@languageMeaning');
+    $router->post('/{language}/libraries/tutorial', 'LanguageController@languageMeaning');
+    $router->post('/{language}/frameworks/tutorial', 'LanguageController@languageMeaning');
 });
 

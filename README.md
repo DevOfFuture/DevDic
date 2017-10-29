@@ -1,6 +1,6 @@
 ﻿# DevDic
 
-> DevDic is a programming dictionary for Developers by Developers. This Bot can teach you almost everything about almost 
+> DevDic is a programming dictionary for Developers made by Developers. This Bot can teach you almost everything about almost 
 > any programming language by showing you the language meaning and also suggest good important links/tutorials to learn.
 
 ### Setting up the project
