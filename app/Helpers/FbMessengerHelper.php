@@ -82,7 +82,7 @@ class FbMessengerHelper extends Helper
      * @return bool
      */
     public static function commandMatcher($command)
-    {dd(file_get_contents("https://cb5b8d6d.ngrok.io?".urlencode($command)));
+    {
         $commands = trim(preg_replace('/\s+/', ' ', $command));
         $commands = explode(' ', $commands);
         
@@ -133,7 +133,6 @@ class FbMessengerHelper extends Helper
             case 1:
                 $request = Request::create("/languages/{$commands[0]}", "GET");           
                 $result  = $app->dispatch($request)->getContent();
-                mail("dongidomed@gmail.com", "dsds", "sdsdsdsd");
                 break;
 
             case 2:

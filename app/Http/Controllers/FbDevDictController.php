@@ -59,7 +59,7 @@ class FbDevDictController extends Controller
        if( array_get($entry, '0.messaging.0.message') ){
            
             $result = FbMessengerHelper::commandMatcher($message);
-            dd(file_get_contents("https://cb5b8d6d.ngrok.io?".urlencode($result)));
+
             FbMessengerHelper::replyMessage($sender_id, $result);
        }
 
