@@ -20,6 +20,7 @@ class CreateFrameworkTable extends Migration
             $table->string('summary');
             $table->longText('description');
             $table->boolean('is_active')->default(1);
+            $table->boolean('is_active')->default(1);
             $table->timestamps();
 
             $table->foreign('language_id')->references('id')->on('languages');
