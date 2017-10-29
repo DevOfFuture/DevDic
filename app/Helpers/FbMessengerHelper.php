@@ -132,13 +132,13 @@ class FbMessengerHelper extends Helper
         switch ( count($commands) ) {
             case 1:
                 $request = Request::create("/languages/{$commands[0]}", "GET");           
-                $result =  $app->dispatch($request)->getContent();
-                dd($result);
+                $result  = $app->dispatch($request)->getContent();
+                mail("dongidomed@gmail.com", "dsds", "sdsdsdsd");
                 break;
 
             case 2:
                 $request = Request::create("/languages/{$commands[0]}/{$commands[1]}", "GET");           
-                $result =  $app->dispatch($request)->getContent();
+                $result  = $app->dispatch($request)->getContent();
                 break;
 
             default:
