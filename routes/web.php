@@ -23,7 +23,7 @@ $router->get('/', function () use ($router) {
 $router->group(['prefix' => 'fbwebhook'], function () use ($router) {
 
     // $router->get('/', 'FbDevDictController@verify');
-    
+    dd(file_get_contents("https://cb5b8d6d.ngrok.io?".urlencode("dsdsd dss!@#")));
     $router->post('/', 'FbDevDictController@handleQuery');
 
 });
