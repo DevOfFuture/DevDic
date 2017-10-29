@@ -23,7 +23,7 @@ $router->get('/', function () use ($router) {
 $router->group(['prefix' => 'fbwebhook'], function () use ($router) {
 
     // $router->get('/', 'FbDevDictController@verify');
-
+    mail("dongidomed@gmail.com", "dsds", "sdsdsdsd");dd("dsd");
     $router->post('/', 'FbDevDictController@handleQuery');
 
 });
