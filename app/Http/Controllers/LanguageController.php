@@ -27,7 +27,7 @@ class LanguageController extends Controller
     public function allLanguages(Request $request)
     {
         $query = $request->get('query');
-        
+
         // if(!$query) { return "Invalid request"; }
 
         $limit = array_get($query, 'limit', 10);
@@ -41,11 +41,6 @@ class LanguageController extends Controller
 
         return response()
                       ->json([$status, $data]);
-    }
-
-    public function languageMeaning(Request $request)
-    {
-        return "PHP is blablabla";
     }
 
     public function detail($language)
@@ -63,5 +58,67 @@ class LanguageController extends Controller
                       ->json([$status, $data]);
     }
 
+    public function tutorials($language)
+    {
+        
+        $language_id = Language::where('is_active', 1)->where('name', $language)->first(['id']);
+        
+        if( ! $language_id ) { return ""; } //fix this later, should return a json
+
+        $detail = Language::find($language_id->id)
+                          ->tutorials()->get(["language_id", "tutorial_link"])->toArray();
+
+        $data = ["data" => $detail ];
+
+        $status = ["status" => "success"];
+
+        return response()
+                      ->json([$status, $data]);
+    }
     
+    public function articles($language)
+    {
+
+        $detail = Language::where('is_active', 1)
+                          ->where('name', $language)
+                          ->get(["name", "description", "summary"])->toArray();
+
+        $data = ["data" => $detail ];
+
+        $status = ["status" => "success"];
+
+        return response()
+                      ->json([$status, $data]);
+    }
+
+    public function libraries($language)
+    {
+
+        $detail = Language::where('is_active', 1)
+                          ->where('name', $language)
+                          ->get(["name", "description", "summary"])->toArray();
+
+        $data = ["data" => $detail ];
+
+        $status = ["status" => "success"];
+
+        return response()
+                      ->json([$status, $data]);
+    }
+
+    public function frameworks($language)
+    {
+
+        $detail = Language::where('is_active', 1)
+                          ->where('name', $language)
+                          ->get(["name", "description", "summary"])->toArray();
+
+        $data = ["data" => $detail ];
+
+        $status = ["status" => "success"];
+
+        return response()
+                      ->json([$status, $data]);
+    }
+
 }

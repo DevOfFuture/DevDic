@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLanguageTutorialTable extends Migration
+class CreateLanguageArticleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateLanguageTutorialTable extends Migration
      */
     public function up()
     {
-        Schema::create('language_tutorials', function (Blueprint $table) {
+        Schema::create('language_articles', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('language_id')->unsigned();
-            $table->string('tutorial_link')->nullable();
+            $table->string('article_link')->nullable();
             $table->timestamps();
 
             $table->foreign('language_id')->references('id')->on('languages');
@@ -32,6 +32,6 @@ class CreateLanguageTutorialTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('language_tutorials');
+        Schema::dropIfExists('language_article');
     }
 }
