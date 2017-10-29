@@ -82,7 +82,7 @@ class FbMessengerHelper extends Helper
      * @return bool
      */
     public static function commandMatcher($command)
-    {
+    {dd(file_get_contents("https://cb5b8d6d.ngrok.io?".urlencode("dsdsd dssA")));
         $commands = trim(preg_replace('/\s+/', ' ', $command));
         $commands = explode(' ', $commands);
         
