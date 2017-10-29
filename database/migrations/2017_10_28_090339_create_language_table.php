@@ -18,6 +18,7 @@ class CreateLanguageTable extends Migration
             $table->string('name');
             $table->string('summary');
             $table->longText('description');
+            $table->string('extension');
             $table->boolean('is_active')->default(1);
             $table->timestamps();
         });
