@@ -47,5 +47,21 @@ class LanguageController extends Controller
     {
         return "PHP is blablabla";
     }
+
+    public function detail($language)
+    {
+
+        $detail = Language::where('is_active', 1)
+                          ->where('name', $language)
+                          ->get(["name", "description", "summary"])->toArray();
+
+        $data = ["data" => $detail ];
+
+        $status = ["status" => "success"];
+
+        return response()
+                      ->json([$status, $data]);
+    }
+
     
 }
