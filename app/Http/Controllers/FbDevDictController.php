@@ -52,7 +52,7 @@ class FbDevDictController extends Controller
 
        $sender_id = array_get($entry, '0.messaging.0.sender.id');
 
-       $message = array_get($entry, '0.messaging.0.message.text');
+       $message   = array_get($entry, '0.messaging.0.message.text');
        
        // only react if the event message received
        
@@ -60,7 +60,7 @@ class FbDevDictController extends Controller
            
             $result = FbMessengerHelper::commandMatcher($message);
             
-            if( count($result) ){
+            if( count($result) > 0 ){
                 foreach( $result as $key => $value ){
                     FbMessengerHelper::replyMessage($sender_id, $value);
                 }
