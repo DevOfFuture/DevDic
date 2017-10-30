@@ -23,7 +23,7 @@ $router->get('/', function () use ($router) {
 $router->group(['prefix' => 'fbwebhook'], function () use ($router) {
 
     $router->get('/', 'FbDevDictController@verify');
-    dd(env('FACEBOOK_APP_TOKEN'));
+
     $router->post('/', 'FbDevDictController@handleQuery');
 
 });
