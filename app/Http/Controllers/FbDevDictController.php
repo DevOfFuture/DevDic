@@ -60,8 +60,13 @@ class FbDevDictController extends Controller
            
             $result = FbMessengerHelper::commandMatcher($message);
             
-            foreach( $result as $key => $value ){
-                FbMessengerHelper::replyMessage($sender_id, $value);
+            if( count($result) ){
+                foreach( $result as $key => $value ){
+                    FbMessengerHelper::replyMessage($sender_id, $value);
+                }
+            }
+            else{
+                   FbMessengerHelper::replyMessage($sender_id, "Sorry but there is no information about the language here.");
             }
        }
 
