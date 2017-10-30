@@ -44,7 +44,7 @@ class LanguageController extends Controller
 
         $detail = Language::where('is_active', 1)
                           ->where('name', $language)
-                          ->get(["name", "description", "summary"])->toArray();
+                          ->first(["name", "description", "summary"])->toArray();
 
         return response()
                       ->json(["status" => "success", "data" => $detail]);
