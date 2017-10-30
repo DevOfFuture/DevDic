@@ -55,7 +55,7 @@ class FbMessengerHelper extends Helper
     {
         $access_token = env('FACEBOOK_APP_TOKEN');
         $url = "https://graph.facebook.com/v2.6/me/messages?access_token=EAAEJM5dlSMMBAF88gZA0nhtiNxtLkWdatIWyHhfJvp6ZC0N0t85byJLDhqvPyJdAijSrVa1DZBkvBFK6ccfyVr4hwJCt4CqRCNyxZC8TRrmpldHp2SooQz6ZAJZArG6ZBZCF3jgsgqUEtHnAsLZAVHa0yk79AZBUdsYSqydCqaKAnstAZDZD";
-
+        
         $data = json_encode([
             'recipient' => ['id' => $id],
             'message'   => ['text' => $response]
