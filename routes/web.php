@@ -35,16 +35,16 @@ $router->group(['prefix' => 'fbwebhook'], function () use ($router) {
 
 $router->group(['prefix' => 'languages'], function () use ($router) {
     
-    $router->get('/',                    'LanguageController@allLanguages');
-    $router->get('/{language}',           'LanguageController@detail');
-    $router->get('/{language}/tutorials',  'LanguageController@tutorials');
-    $router->get('/{language}/articles',    'LanguageController@articles');
-    $router->get('/{language}/libraries',    'LanguageController@libraries');
-    $router->get('/{language}/frameworks',    'LanguageController@frameworks');
+    $router->get('/', 'LanguageController@allLanguages');
+    $router->get('/{language}', 'LanguageController@detail');
+    $router->get('/{language}/tutorials', 'LanguageController@tutorials');
+    $router->get('/{language}/articles', 'LanguageController@articles');
+    $router->get('/{language}/libraries', 'LanguageController@libraries');
+    $router->get('/{language}/frameworks', 'LanguageController@frameworks');
 
-    $router->post('/',                'LanguageController@add');
+    $router->post('/', 'LanguageController@add');
     $router->post('/{language}/update', 'LanguageController@update');
-    $router->post('/{language}/delete',  'LanguageController@delete');
+    $router->post('/{language}/delete', 'LanguageController@delete');
 
     $router->post('/{language}/libraries/{library}', 'LibraryController@add');
     $router->post('/{language}/libraries/{library}/update','LibraryController@update');

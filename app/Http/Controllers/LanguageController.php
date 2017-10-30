@@ -36,7 +36,7 @@ class LanguageController extends Controller
         $languages = Language::where('is_active', 1)->take($limit)->skip($skip)->get()->toArray();
 
         return response()
-                      ->json([ "status"=> "success", "data" => $detail]);
+                      ->json([ "status"=> "success", "data" => $languages]);
     }
 
     public function detail($language)
