@@ -129,6 +129,7 @@ class FbMessengerHelper extends Helper
             case 1:
                 $request = Request::create("/languages/{$commands[0]}", "GET");           
                 $result  = $app->dispatch($request)->getContent();
+                dd( json_decode($result, true));
                 break;
 
             case 2:

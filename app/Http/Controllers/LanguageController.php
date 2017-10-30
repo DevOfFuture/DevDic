@@ -34,13 +34,9 @@ class LanguageController extends Controller
         $skip  = array_get($query, 'skip', 0);
 
         $languages = Language::where('is_active', 1)->take($limit)->skip($skip)->get()->toArray();
-       
-        $data = ["data" => $languages ];
-
-        $status = ["status" => "success"];
 
         return response()
-                      ->json([$status, $data]);
+                      ->json([ "status"=> "success", "data" => $detail]);
     }
 
     public function detail($language)
@@ -50,12 +46,8 @@ class LanguageController extends Controller
                           ->where('name', $language)
                           ->get(["name", "description", "summary"])->toArray();
 
-        $data = ["data" => $detail ];
-
-        $status = ["status" => "success"];
-
         return response()
-                      ->json([$status, $data]);
+                      ->json(["status" => "success", "data" => $detail]);
     }
 
     public function tutorials($language)
@@ -68,12 +60,8 @@ class LanguageController extends Controller
         $detail = Language::find($language_id->id)
                           ->tutorials()->get(["language_id", "tutorial_link"])->toArray();
 
-        $data = ["data" => $detail ];
-
-        $status = ["status" => "success"];
-
         return response()
-                      ->json([$status, $data]);
+                      ->json(["status" => "success", "data"=> $detail]);
     }
     
     public function articles($language)
@@ -83,12 +71,8 @@ class LanguageController extends Controller
                           ->where('name', $language)
                           ->get(["name", "description", "summary"])->toArray();
 
-        $data = ["data" => $detail ];
-
-        $status = ["status" => "success"];
-
         return response()
-                      ->json([$status, $data]);
+                      ->json([ "status" => "success", "data" => $detail]);
     }
 
     public function libraries($language)
