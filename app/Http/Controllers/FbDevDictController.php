@@ -59,7 +59,7 @@ class FbDevDictController extends Controller
        if( array_get($entry, '0.messaging.0.message') ){
            
             $result = FbMessengerHelper::commandMatcher($message);
-            FbMessengerHelper::replyMessage($sender_id, "asdasd");
+            
             foreach( $result as $key => $value ){
                 FbMessengerHelper::replyMessage($sender_id, $value);
             }
