@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Helpers\FbMessengerHelper;
-use App\Language;
+use App\Library;
 
-class LanguageController extends Controller
+class LibraryController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -33,7 +33,7 @@ class LanguageController extends Controller
         $limit = array_get($query, 'limit', 10);
         $skip  = array_get($query, 'skip', 0);
 
-        $languages = Language::where('is_active', 1)->take($limit)->skip($skip)->get()->toArray();
+        $languages = Library::where('is_active', 1)->take($limit)->skip($skip)->get()->toArray();
 
         return response()
                       ->json([ "status"=> "success", "data" => $languages]);
@@ -42,18 +42,17 @@ class LanguageController extends Controller
     public function detail($language)
     {
 
-        $detail = Language::where('is_active', 1)
+        $detail = Library::where('is_active', 1)
                           ->where('name', $language)
                           ->first(["name", "description", "summary"])->toArray();
 
-        return response()
-                      ->json(["status" => "success", "data" => $detail]);
+        return response()->json(["status" => "success", "data" => $detail]);
     }
 
     public function tutorials($language)
     {
         
-        $language_id = Language::where('is_active', 1)->where('name', $language)->first(['id']);
+        $language_id = Library::where('is_active', 1)->where('name', $language)->first(['id']);
         
         if( ! $language_id ) { return ""; } //fix this later, should return a json #TODO
 
@@ -66,38 +65,12 @@ class LanguageController extends Controller
     public function articles($language)
     {
 
-        $language_id = Language::where('is_active', 1)->where('name', $language)->first(['id']);
+        $language_id = Library::where('is_active', 1)->where('name', $language)->first(['id']);
         
         if( ! $language_id ) { return ""; } //fix this later, should return a json #TODO
 
         $detail = Language::find($language_id->id)
                           ->articles()->get(["language_id", "article_link"])->toArray();
-
-        return response()->json(["status" => "success", "data"=> $detail]);
-    }
-
-    public function libraries(Request $request, $language)
-    {
-        
-        $language_id = Language::where('is_active', 1)->where('name', $language)->first(['id']);
-        
-        if( ! $language_id ) { return ""; } //fix this later, should return a json #TODO
-
-        $detail = Language::find($language_id->id)
-                          ->libraries()->get(["language_id", "name", "summary", "description"])->toArray();
-
-        return response()->json(["status" => "success", "data"=> $detail]);
-    }
-
-    public function frameworks($language)
-    {
-
-        $language_id = Language::where('is_active', 1)->where('name', $language)->first(['id']);
-        
-        if( ! $language_id ) { return ""; } //fix this later, should return a json #TODO
-
-        $detail = Language::find($language_id->id)
-                          ->frameworks()->get(["language_id", "name", "summary", "description"])->toArray();
 
         return response()->json(["status" => "success", "data"=> $detail]);
     }

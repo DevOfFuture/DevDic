@@ -59,3 +59,29 @@ $router->group(['prefix' => 'languages'], function () use ($router) {
     $router->post('/{language}/framework/tutorial', 'LanguageController@languageMeaning');
 });
 
+
+//===
+// Routes to framework
+//===
+
+$router->group(['prefix' => 'framework'], function () use ($router) {
+    
+    $router->get('/', 'FrameworkController@allFrameworks');
+    $router->get('/{framework}', 'FrameworkController@detail');
+    $router->get('/{framework}/tutorials', 'FrameworkController@detail');
+    $router->get('/{framework}/articles', 'FrameworkController@detail');
+});
+
+
+//===
+// Routes to libraries
+//===
+
+$router->group(['prefix' => 'libraries'], function () use ($router) {
+    
+    $router->get('/', 'FrameworkController@allLibraries');
+    $router->get('/{libraries}', 'FrameworkController@detail');
+    $router->get('/{libraries}/tutorials', 'FrameworkController@detail');
+    $router->get('/{libraries}/articles', 'FrameworkController@detail');
+});
+

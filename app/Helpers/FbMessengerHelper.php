@@ -130,11 +130,22 @@ class FbMessengerHelper extends Helper
                 $request = Request::create("/languages/{$commands[0]}", "GET");           
                 $result  = $app->dispatch($request)->getContent();
                 $result  = array_get(json_decode($result, true), "data");
+                $result  = ["data" => $result, "filter"=> ["summary", "description"] ];
                 break;
 
             case 2:
-                $request = Request::create("/languages/{$commands[0]}/{$commands[1]}", "GET");           
-                $result  = $app->dispatch($request)->getContent();
+                if( strtolower($commands[1]) == "extension" ){
+                    $request = Request::create("/languages/{$commands[0]}/{$commands[1]}", "GET");           
+                    $result  = $app->dispatch($request)->getContent();
+                }
+                else if( (strtolower($commands[1]) == "libraries") OR (strtolower($commands[1]) == "frameworks") ){
+                    $request = Request::create("/languages/{$commands[0]}/{$commands[1]}", "GET");           
+                    $result  = $app->dispatch($request)->getContent();
+                }
+                else{
+                    $request = Request::create("/languages/{$commands[0]}/{$commands[1]}", "GET");           
+                    $result  = $app->dispatch($request)->getContent();
+                }
                 break;
 
             default:
