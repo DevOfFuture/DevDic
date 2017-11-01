@@ -72,7 +72,7 @@ class FbDevDictController extends Controller
                 }
             }
             else{
-                   FbMessengerHelper::replyMessage($sender_id, "Sorry but there is no information about this language here.");
+                   FbMessengerHelper::replyMessage($sender_id, "Sorry, there is no information about this language on our database yet.");
             }
        }
 
