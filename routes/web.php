@@ -70,6 +70,7 @@ $router->group(['prefix' => 'framework'], function () use ($router) {
     $router->get('/{framework}', 'FrameworkController@detail');
     $router->get('/{framework}/tutorials', 'FrameworkController@detail');
     $router->get('/{framework}/articles', 'FrameworkController@detail');
+    $router->get('/{framework}/language', 'FrameworkController@detail');
 });
 
 

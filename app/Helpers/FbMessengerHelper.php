@@ -92,11 +92,11 @@ class FbMessengerHelper extends Helper
                 break;
 
             case 'library':
-                # code...
+                $result = self::libraryMatcher($commands);
                 break;
 
             case 'framework':
-                # code...
+                $result = self::frameworkMatcher($commands);
                 break;
 
             case 'extension':
@@ -170,28 +170,29 @@ class FbMessengerHelper extends Helper
      * @param  string  $command
      * @return bool
      */
-    public static function frameworkMatcher($command)
+    public static function frameworkMatcher($commands = [])
     {
-        $commands = trim(preg_replace('/\s+/', ' ', $command));
-        $commands = explode(' ', $commands);
-        
-        if( count($commands) < 1 ) { return "empty command"; }
+        $commands = array_splice($commands,1,1);
 
-        switch ( strtolower($commands[0]) ) {
-            case 'language':
-                # code...
+        switch ( count($commands) ) {
+            case 1:
+                    $request = Request::create("/framework/{$commands[0]}", "GET");           
+                    $result  = $app->dispatch($request)->getContent();
+                    $result  = array_get(json_decode($result, true), "data");
+                    $result  = ["data" => $result, "filter" => ["summary", "summary", "description"] ];
                 break;
 
-            case 'library':
-                # code...
-                break;
-
-            case 'framework':
-                # code...
-                break;
-
-            case 'extension':
-                # code...
+            case 2:
+                if( (strtolower($commands[1]) == "tutorials") OR (strtolower($commands[1]) == "articles") ){
+                    $request = Request::create("/framework/{$commands[0]}/{$commands[1]}", "GET");           
+                    $result  = $app->dispatch($request)->getContent();
+                    $result  = ["data" => $result, "filter"=> ["name", "summary"] ];
+                }
+                else if( strtolower($commands[1]) == "language"){
+                    $request = Request::create("/framework/{$commands[0]}/{$commands[1]}", "GET");           
+                    $result  = $app->dispatch($request)->getContent();
+                    $result  = ["data" => $result, "filter"=> ["name"] ];
+                }
                 break;
 
             default:
@@ -208,33 +209,34 @@ class FbMessengerHelper extends Helper
      * @param  string  $command
      * @return bool
      */
-    public static function libraryMatcher($command)
+    public static function libraryMatcher($commands = [])
     {
-        $commands = trim(preg_replace('/\s+/', ' ', $command));
-        $commands = explode(' ', $commands);
-        
-        if( count($commands) < 1 ) { return "empty command"; }
+        $commands = array_splice($commands,1,1);
 
-        switch ( strtolower($commands[0]) ) {
-            case 'language':
-                # code...
-                break;
+        switch ( count($commands) ) {
+            case 1:
+            $request = Request::create("/library/{$commands[0]}", "GET");           
+            $result  = $app->dispatch($request)->getContent();
+            $result  = array_get(json_decode($result, true), "data");
+            $result  = ["data" => $result, "filter" => ["summary", "summary", "description"] ];
+        break;
 
-            case 'library':
-                # code...
-                break;
+        case 2:
+            if( (strtolower($commands[1]) == "tutorials") OR (strtolower($commands[1]) == "articles") ){
+                $request = Request::create("/library/{$commands[0]}/{$commands[1]}", "GET");           
+                $result  = $app->dispatch($request)->getContent();
+                $result  = ["data" => $result, "filter"=> ["name", "summary"] ];
+            }
+            else if( strtolower($commands[1]) == "language"){
+                $request = Request::create("/library/{$commands[0]}/{$commands[1]}", "GET");           
+                $result  = $app->dispatch($request)->getContent();
+                $result  = ["data" => $result, "filter"=> ["name"] ];
+            }
+        break;
 
-            case 'framework':
-                # code...
-                break;
-
-            case 'extension':
-                # code...
-                break;
-
-            default:
-                # code...
-                break;
+        default:
+            # code...
+            break;
         }
 
         return $result;
