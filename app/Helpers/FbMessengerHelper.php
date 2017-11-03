@@ -156,8 +156,8 @@ class FbMessengerHelper extends Helper
                 break;
 
             default:
-                $request = Request::create("/languages/{$commands[0]}", "GET");           
-                $result =  $app->dispatch($request)->getContent();
+                   $request = Request::create("/languages/{$commands[0]}", "GET");           
+                   $result =  $app->dispatch($request)->getContent();
                 break;
         }
 

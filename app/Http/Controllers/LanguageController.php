@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Helpers\FbMessengerHelper;
 use App\Language;
+use App\LanguageTutorial;
 
 class LanguageController extends Controller
 {
@@ -43,7 +44,19 @@ class LanguageController extends Controller
 
         $detail = Language::where('is_active', 1)
                           ->where('name', $language)
-                          ->first(["name", "description", "summary"])->toArray();
+                          ->first(["id", "name", "description", "summary"])->toArray();
+                          
+        if( $detail['id'] ){
+            $tutorials = Language::find($detail['id'])->tutorials()->take(2)->get()->toArray();
+            $pre_tutorial = "";
+            foreach ($tutorials as $key => $value) {
+                $pre_tutorial .= $value['name'] . $value['tutorial_link'] . ",
+
+                ";
+            }
+        }
+
+        $detail['tutorials'] = $pre_tutorial;
 
         return response()->json(["status" => "success", "data" => $detail]);
     }

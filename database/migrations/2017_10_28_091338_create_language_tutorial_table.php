@@ -16,6 +16,7 @@ class CreateLanguageTutorialTable extends Migration
         Schema::create('language_tutorials', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('language_id')->unsigned();
+            $table->string('name')->nullable();
             $table->string('tutorial_link')->nullable();
             $table->timestamps();
 

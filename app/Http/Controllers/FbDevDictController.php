@@ -54,7 +54,7 @@ class FbDevDictController extends Controller
 
        $message   = array_get($entry, '0.messaging.0.message.text');
        
-       // only react if the event message received
+       // only react if the event is message received
        
        if( array_get($entry, '0.messaging.0.message') ){
            
