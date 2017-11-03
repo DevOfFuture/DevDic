@@ -48,7 +48,9 @@ class LanguageController extends Controller
                           
         if( $detail['id'] ){
             $tutorials = Language::find($detail['id'])->tutorials()->take(2)->get()->toArray();
-            $pre_tutorial = "";
+            $pre_tutorial = "Tutorials:
+            
+            ";
             foreach ($tutorials as $key => $value) {
                 $pre_tutorial .= $value['name'] . '-' .$value['tutorial_link'] . ",
 
