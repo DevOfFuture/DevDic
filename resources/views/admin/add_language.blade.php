@@ -14,22 +14,22 @@
     <form method="POST" action="/admin/add_language">
       <div class="form-group">
         <label for="exampleFormControlInput1">Language Name</label>
-        <input name="name" type="text" class="form-control" placeholder="language name, eg: php">
+        <input name="name" type="text" class="form-control" placeholder="language name, eg: php" required>
       </div>
       
       <div class="form-group">
         <label for="exampleFormControlInput1">extension</label>
-        <input name="extension" type="text" class="form-control" placeholder="language extension, eg: .php">
+        <input name="extension" type="text" class="form-control" placeholder="language extension, eg: .php" required>
       </div>
 
       <div class="form-group">
         <label for="exampleFormControlTextarea1">Summary</label>
-        <textarea class="form-control" name="summary" rows="3"></textarea>
+        <textarea class="form-control" name="summary" rows="3 required"></textarea>
       </div>
 
       <div class="form-group">
         <label for="exampleFormControlTextarea1">Description {maybe show code to print "Hello World"}</label>
-        <textarea class="form-control" name="description" rows="6"></textarea>
+        <textarea class="form-control" name="description" rows="6" required></textarea>
       </div>
 
       <button type="submit" role="submit" class="btn btn-primary">Confirm and Submit</button>
