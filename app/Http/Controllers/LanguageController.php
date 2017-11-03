@@ -50,14 +50,13 @@ class LanguageController extends Controller
             $tutorials = Language::find($detail['id'])->tutorials()->take(2)->get()->toArray();
             $pre_tutorial = "";
             foreach ($tutorials as $key => $value) {
-                $pre_tutorial .= $value['name'] . $value['tutorial_link'] . ",
+                $pre_tutorial .= $value['name'] . '-' .$value['tutorial_link'] . ",
 
                 ";
             }
         }
 
-        $detail['tutorials'] = $pre_tutorial;
-
+        $detail['tutorials'] = substr($pre_tutorial, 0, -1);
         return response()->json(["status" => "success", "data" => $detail]);
     }
 
