@@ -23,7 +23,6 @@ class CreateLibraryTutorialTable extends Migration
             $table->foreign('library_id')->references('id')->on('libraries');
         });
         
-        Schema::disableForeignKeyConstraints();
     }
 
     /**

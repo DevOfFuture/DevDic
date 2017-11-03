@@ -12,7 +12,7 @@ class Language extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'summary', 'description',
+        'name', 'summary', 'description', 'extension',
     ];
 
     /**

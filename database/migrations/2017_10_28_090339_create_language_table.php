@@ -22,6 +22,7 @@ class CreateLanguageTable extends Migration
             $table->boolean('is_active')->default(1);
             $table->timestamps();
         });
+
     }
 
     /**
@@ -31,6 +32,8 @@ class CreateLanguageTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
+        
         Schema::dropIfExists('languages');
     }
 }

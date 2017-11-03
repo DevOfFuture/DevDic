@@ -72,7 +72,7 @@ class FbMessengerHelper extends Helper
     }
 
     /**
-     * Gets User commands and decide which route it should goto
+     * Gets User commands and decide which endpoint it should call
      *
      * @param  string  $command
      * @return bool
@@ -141,7 +141,7 @@ class FbMessengerHelper extends Helper
                 else if( (strtolower($commands[1]) == "libraries") OR (strtolower($commands[1]) == "frameworks") ){
                     $request = Request::create("/languages/{$commands[0]}/{$commands[1]}", "GET");           
                     $result  = $app->dispatch($request)->getContent();
-                    $result  = ["data" => $result, "filter"=> ["name", "summary"] ];
+                    $result  = ["data" => $result, "filter" => ["name", "summary"] ];
                 }
                 else if( (strtolower($commands[1]) == "tutorials") OR (strtolower($commands[1]) == "articles") ){
                     $request = Request::create("/languages/{$commands[0]}/{$commands[1]}", "GET");           
@@ -151,7 +151,7 @@ class FbMessengerHelper extends Helper
                 else{
                     $request = Request::create("/languages/{$commands[0]}/{$commands[1]}", "GET");           
                     $result  = $app->dispatch($request)->getContent();
-                    $result  = ["data" => $result, "filter"=> ["summary", "description"] ];
+                    $result  = ["data" => $result, "filter" => ["summary", "description"] ];
                 }
                 break;
 

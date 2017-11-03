@@ -23,7 +23,6 @@ class CreateFrameworkTutorialTable extends Migration
             $table->foreign('framework_id')->references('id')->on('frameworks');
         });
         
-        Schema::disableForeignKeyConstraints();
     }
 
     /**

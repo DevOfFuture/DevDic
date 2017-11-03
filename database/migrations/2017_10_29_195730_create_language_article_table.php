@@ -22,7 +22,6 @@ class CreateLanguageArticleTable extends Migration
             $table->foreign('language_id')->references('id')->on('languages');
         });
 
-        Schema::disableForeignKeyConstraints();
     }
 
     /**

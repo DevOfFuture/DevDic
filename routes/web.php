@@ -17,6 +17,20 @@ $router->get('/', function () use ($router) {
 
 
 //===
+// Routes to Admin
+//===
+
+$router->group(['prefix' => 'admin'], function () use ($router) {
+    
+    $router->get('/', 'AdminController@index');
+    $router->get('/languages', 'AdminController@showLanguages');
+    $router->get('/add_language', 'AdminController@show');
+    $router->post('/add_language', 'AdminController@store');
+    $router->get('/edit_language', 'AdminController@editLanguage');
+});
+
+
+//===
 // Routes to every request concerning facebook
 //===
 
