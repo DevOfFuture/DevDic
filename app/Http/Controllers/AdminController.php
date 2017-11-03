@@ -55,6 +55,14 @@ class AdminController extends Controller
         return view("admin.add_language", []);
     }
 
+    
+    public function show_all()
+    {
+        $data = Language::all();
+  
+        return view("admin.all_language", ["data" => $data] );
+    }
+
     public function edit(Request $request)
     {
         $data = $request->all();
