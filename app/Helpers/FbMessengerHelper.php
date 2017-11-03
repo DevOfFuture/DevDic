@@ -130,7 +130,7 @@ class FbMessengerHelper extends Helper
                 $request = Request::create("/languages/{$commands[0]}", "GET");           
                 $result  = $app->dispatch($request)->getContent();
                 $result  = array_get(json_decode($result, true), "data");
-                $result  = ["data" => $result, "filter"=> ["summary", "description"] ];
+                $result  = ["data" => $result, "filter"=> ["summary", "description", "tutorials"] ];
                 break;
 
             case 2:
