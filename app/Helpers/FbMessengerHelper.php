@@ -172,7 +172,7 @@ class FbMessengerHelper extends Helper
      */
     public static function frameworkMatcher($commands = [])
     {
-        $commands = array_splice($commands,1,1);
+        $commands = array_splice($commands,1);
 
         switch ( count($commands) ) {
             case 1:
@@ -211,7 +211,7 @@ class FbMessengerHelper extends Helper
      */
     public static function libraryMatcher($commands = [])
     {
-        $commands = array_splice($commands,1,1);
+        $commands = array_splice($commands,1);
 
         switch ( count($commands) ) {
             case 1:
