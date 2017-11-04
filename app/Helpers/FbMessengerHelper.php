@@ -121,8 +121,8 @@ class FbMessengerHelper extends Helper
     {
         global $app;
         
-        $commands = array_splice($commands,1,1);
-        
+        $commands = array_splice($commands,1);
+
         $result = [];
 
         switch ( count($commands) ) {
