@@ -59,11 +59,11 @@ class FbDevDictController extends Controller
        if( array_get($entry, '0.messaging.0.message') ){
            
             $data = FbMessengerHelper::commandMatcher($message);
-            
+
             $result = array_get($data, "data", []);
-
+            
             $filter = array_get($data, "filter", []);
-
+            
             if( count($result) > 0 ){
                 foreach( $filter as $key ){
                     if( $value = array_get($result, $key) ){

@@ -56,6 +56,7 @@ $router->group(['prefix' => 'languages'], function () use ($router) {
     $router->get('/{language}/articles', 'LanguageController@articles');
     $router->get('/{language}/libraries', 'LanguageController@libraries');
     $router->get('/{language}/frameworks', 'LanguageController@frameworks');
+    $router->get('/{language}/extension', 'LanguageController@extension');
 
     $router->post('/', 'LanguageController@add');
     $router->post('/{language}/update', 'LanguageController@update');

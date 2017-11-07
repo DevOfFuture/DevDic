@@ -135,28 +135,35 @@ class FbMessengerHelper extends Helper
 
             case 2:
                 if( strtolower($commands[1]) == "extension" ){
-                    $request = Request::create("/languages/{$commands[0]}/{$commands[1]}", "GET");           
+                    $request = Request::create("/languages/{$commands[0]}/{$commands[1]}", "GET");          
                     $result  = $app->dispatch($request)->getContent();
+                    $result  = array_get(json_decode($result, true), "data"); 
+                    $result  = ["data" => $result, "filter" => ["extension"] ];
                 }
                 else if( (strtolower($commands[1]) == "libraries") OR (strtolower($commands[1]) == "frameworks") ){
                     $request = Request::create("/languages/{$commands[0]}/{$commands[1]}", "GET");           
                     $result  = $app->dispatch($request)->getContent();
-                    $result  = ["data" => $result, "filter" => ["name", "summary"] ];
+                    $result  = array_get(json_decode($result, true), "data");
+                    $result  = ["data" => $result, "filter" => ["name", (strtolower($commands[1]) == "libraries") ? "libraries": "frameworks"] ];
+
                 }
                 else if( (strtolower($commands[1]) == "tutorials") OR (strtolower($commands[1]) == "articles") ){
                     $request = Request::create("/languages/{$commands[0]}/{$commands[1]}", "GET");           
-                    $result  = $app->dispatch($request)->getContent();
-                    $result  = ["data" => $result, "filter"=> ["name", "tutorial_link"] ];
+                    $result  = $app->dispatch($request)->getContent(); 
+                    $result  = array_get(json_decode($result, true), "data");
+                    $result  = ["data" => $result, "filter"=> ["name", "tutorials"] ];
                 }
                 else{
                     $request = Request::create("/languages/{$commands[0]}/{$commands[1]}", "GET");           
                     $result  = $app->dispatch($request)->getContent();
+                    $result  = array_get(json_decode($result, true), "data");
                     $result  = ["data" => $result, "filter" => ["summary", "description"] ];
                 }
                 break;
 
             default:
-                   $request = Request::create("/languages/{$commands[0]}", "GET");           
+                   $request = Request::create("/languages/{$commands[0]}", "GET");    
+                   $result  = array_get(json_decode($result, true), "data");       
                    $result =  $app->dispatch($request)->getContent();
                 break;
         }

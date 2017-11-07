@@ -35,8 +35,7 @@ class LibraryController extends Controller
 
         $languages = Library::where('is_active', 1)->take($limit)->skip($skip)->get()->toArray();
 
-        return response()
-                      ->json([ "status"=> "success", "data" => $languages]);
+        return response()->json([ "status"=> "success", "data" => $languages]);
     }
 
     public function detail($language)

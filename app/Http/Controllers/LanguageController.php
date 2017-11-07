@@ -58,7 +58,7 @@ class LanguageController extends Controller
             }
         }
 
-        $detail['tutorials'] = substr($pre_tutorial, 0, -1);
+        $detail['tutorials'] = substr($pre_tutorial, 0, -1); // remove the last comma ","
         return response()->json(["status" => "success", "data" => $detail]);
     }
 
@@ -69,9 +69,17 @@ class LanguageController extends Controller
         
         if( ! $language_id ) { return ""; } //fix this later, should return a json #TODO
 
-        $detail = Language::find($language_id->id)
-                          ->tutorials()->get(["language_id", "tutorial_link"])->toArray();
+        $tutorials = Language::find($language_id->id)
+                          ->tutorials()->get(["name", "tutorial_link"])->toArray();
+        $pre_tutorial = "";
+        
+        foreach ($tutorials as $key => $value) {
+            $pre_tutorial .= $value['name'] . '-' .$value['tutorial_link'] . ",
 
+            ";
+        }
+
+        $detail['tutorials'] = substr($pre_tutorial, 0, -1); // remove the last comma ","
         return response()->json(["status" => "success", "data"=> $detail]);
     }
     
@@ -95,9 +103,17 @@ class LanguageController extends Controller
         
         if( ! $language_id ) { return ""; } //fix this later, should return a json #TODO
 
-        $detail = Language::find($language_id->id)
-                          ->libraries()->get(["language_id", "name", "summary", "description"])->toArray();
+        $libraries = Language::find($language_id->id)
+                          ->tutorials()->get(["name"])->toArray();
+        $pre_libraries = "";
+        
+        foreach ($libraries as $key => $value) {
+            $pre_libraries .= $value['name'] . '-' . ",
 
+            ";
+        }
+
+        $detail['libraries'] = substr($pre_libraries, 0, -1); // remove the last comma ","
         return response()->json(["status" => "success", "data"=> $detail]);
     }
 
@@ -108,10 +124,26 @@ class LanguageController extends Controller
         
         if( ! $language_id ) { return ""; } //fix this later, should return a json #TODO
 
-        $detail = Language::find($language_id->id)
-                          ->frameworks()->get(["language_id", "name", "summary", "description"])->toArray();
+        $frameworks = Language::find($language_id->id)
+                             ->frameworks()->get(["name"])->toArray();
+        $pre_frameworks = "";
+        
+        foreach ($frameworks as $key => $value) {
+            $pre_frameworks .= $value['name'] . '-' . ",
 
+            ";
+        }
+
+        $detail['frameworks'] = substr($pre_frameworks, 0, -1); // remove the last comma ","
         return response()->json(["status" => "success", "data"=> $detail]);
+    }
+
+    public function extension($language)
+    {
+
+        $extension = Language::where('is_active', 1)->where('name', $language)->first(['extension'])->toArray();
+
+        return response()->json(["status" => "success", "data"=> $extension]);
     }
 
 }
