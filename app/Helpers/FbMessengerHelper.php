@@ -182,6 +182,8 @@ class FbMessengerHelper extends Helper
         global $app;
 
         $commands = array_splice($commands,1);
+        
+        $result  = ["data" => [], "filter"=> [] ];
 
         switch ( count($commands) ) {
             case 1:
@@ -222,33 +224,40 @@ class FbMessengerHelper extends Helper
      */
     public static function libraryMatcher($commands = [])
     {
+        global $app;
+        
+        $result  = ["data" => [], "filter"=> [] ];
+
         $commands = array_splice($commands,1);
 
         switch ( count($commands) ) {
             case 1:
-            $request = Request::create("/library/{$commands[0]}", "GET");           
-            $result  = $app->dispatch($request)->getContent();
-            $result  = array_get(json_decode($result, true), "data");
-            $result  = ["data" => $result, "filter" => ["summary", "summary", "description"] ];
-        break;
-
-        case 2:
-            if( (strtolower($commands[1]) == "tutorials") OR (strtolower($commands[1]) == "articles") ){
-                $request = Request::create("/library/{$commands[0]}/{$commands[1]}", "GET");           
+                $request = Request::create("/library/{$commands[0]}", "GET");           
                 $result  = $app->dispatch($request)->getContent();
-                $result  = ["data" => $result, "filter"=> ["name", "summary"] ];
-            }
-            else if( strtolower($commands[1]) == "language"){
-                $request = Request::create("/library/{$commands[0]}/{$commands[1]}", "GET");           
-                $result  = $app->dispatch($request)->getContent();
-                $result  = ["data" => $result, "filter"=> ["name"] ];
-            }
-        break;
+                $result  = array_get(json_decode($result, true), "data");
 
-        default:
-            # code...
+                $result  = ["data" => $result, "filter" => ["summary", "summary", "description"] ];
+           break;
+
+            case 2:
+                if( (strtolower($commands[1]) == "tutorials") OR (strtolower($commands[1]) == "articles") ){
+                    $request = Request::create("/library/{$commands[0]}/{$commands[1]}", "GET");           
+                    $result  = $app->dispatch($request)->getContent();
+                    $result  = array_get(json_decode($result, true), "data");
+                    $result  = ["data" => $result, "filter"=> ["name", "summary"] ];
+                }
+                else if( strtolower($commands[1]) == "language"){
+                    $request = Request::create("/library/{$commands[0]}/{$commands[1]}", "GET");           
+                    $result  = $app->dispatch($request)->getContent();
+                    $result  = array_get(json_decode($result, true), "data");
+                    $result  = ["data" => $result, "filter"=> ["id", "name"] ];
+                }
             break;
-        }
+
+            default:
+                # code...
+                break;
+            }
 
         return $result;
     }

@@ -38,20 +38,20 @@ class LibraryController extends Controller
         return response()->json([ "status"=> "success", "data" => $languages]);
     }
 
-    public function detail($language)
+    public function detail($library)
     {
 
         $detail = Library::where('is_active', 1)
-                          ->where('name', $language)
+                          ->where('name', $library)
                           ->first(["name", "description", "summary"])->toArray();
 
         return response()->json(["status" => "success", "data" => $detail]);
     }
 
-    public function tutorials($language)
+    public function tutorials($library)
     {
         
-        $language_id = Library::where('is_active', 1)->where('name', $language)->first(['id']);
+        $language_id = Library::where('is_active', 1)->where('name', $library)->first(['id']);
         
         if( ! $language_id ) { return ""; } //fix this later, should return a json #TODO
 
@@ -61,15 +61,28 @@ class LibraryController extends Controller
         return response()->json(["status" => "success", "data"=> $detail]);
     }
     
-    public function articles($language)
+    public function articles($library)
     {
 
-        $language_id = Library::where('is_active', 1)->where('name', $language)->first(['id']);
+        $language_id = Library::where('is_active', 1)->where('name', $library)->first(['id']);
         
         if( ! $language_id ) { return ""; } //fix this later, should return a json #TODO
 
         $detail = Language::find($language_id->id)
                           ->articles()->get(["language_id", "article_link"])->toArray();
+
+        return response()->json(["status" => "success", "data"=> $detail]);
+    }
+
+    public function language($library)
+    {
+
+        $language_id = Library::where('is_active', 1)->where('name', $library)->first(['id']);
+        
+        if( ! $language_id ) { return ""; } //fix this later, should return a json #TODO
+
+        $detail = Library::find($language_id->id)
+                          ->language()->first(["id", "name"])->toArray();
 
         return response()->json(["status" => "success", "data"=> $detail]);
     }

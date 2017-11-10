@@ -94,11 +94,12 @@ $router->group(['prefix' => 'framework'], function () use ($router) {
 // Routes to libraries
 //===
 
-$router->group(['prefix' => 'libraries'], function () use ($router) {
+$router->group(['prefix' => 'library'], function () use ($router) {
     
-    $router->get('/', 'FrameworkController@allLibraries');
-    $router->get('/{libraries}', 'FrameworkController@detail');
-    $router->get('/{libraries}/tutorials', 'FrameworkController@detail');
-    $router->get('/{libraries}/articles', 'FrameworkController@detail');
+    $router->get('/', 'LibraryController@allLibraries');
+    $router->get('/{library}', 'LibraryController@detail');
+    $router->get('/{library}/tutorials', 'LibraryController@detail');
+    $router->get('/{library}/articles', 'LibraryController@detail');
+    $router->get('/{library}/language', 'LibraryController@language');
 });
 
