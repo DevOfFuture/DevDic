@@ -74,7 +74,7 @@ class FrameworkController extends Controller
         return response()->json(["status" => "success", "data"=> $detail]);
     }
 
-    public function langauge($framework)
+    public function language($framework)
     {
 
         $language_id = Framework::where('is_active', 1)->where('name', $framework)->first(['id']);
@@ -82,7 +82,7 @@ class FrameworkController extends Controller
         if( ! $language_id ) { return ""; } //fix this later, should return a json #TODO
 
         $detail = Framework::find($language_id->id)
-                          ->frameworks()->get(["language_id", "name", "summary", "description"])->toArray();
+                          ->language()->first(["id", "name"])->toArray();
 
         return response()->json(["status" => "success", "data"=> $detail]);
     }

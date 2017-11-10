@@ -179,6 +179,8 @@ class FbMessengerHelper extends Helper
      */
     public static function frameworkMatcher($commands = [])
     {
+        global $app;
+
         $commands = array_splice($commands,1);
 
         switch ( count($commands) ) {
@@ -198,6 +200,8 @@ class FbMessengerHelper extends Helper
                 else if( strtolower($commands[1]) == "language"){
                     $request = Request::create("/framework/{$commands[0]}/{$commands[1]}", "GET");           
                     $result  = $app->dispatch($request)->getContent();
+                    $result  = array_get(json_decode($result, true), "data");
+   
                     $result  = ["data" => $result, "filter"=> ["name"] ];
                 }
                 break;

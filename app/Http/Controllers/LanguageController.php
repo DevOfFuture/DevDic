@@ -135,12 +135,12 @@ class LanguageController extends Controller
         }
 
         $detail['frameworks'] = substr($pre_frameworks, 0, -1); // remove the last comma ","
+        
         return response()->json(["status" => "success", "data"=> $detail]);
     }
 
     public function extension($language)
     {
-
         $extension = Language::where('is_active', 1)->where('name', $language)->first(['extension'])->toArray();
 
         return response()->json(["status" => "success", "data"=> $extension]);

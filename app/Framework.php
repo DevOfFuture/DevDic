@@ -14,4 +14,12 @@ class Framework extends Model
     protected $fillable = [
         'name', 'summary', 'description',
     ];
+
+    /**
+    *
+    */
+    public function language()
+    {
+        return $this->belongsTo('App\Language');
+    }
 }
