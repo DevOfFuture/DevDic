@@ -13,7 +13,7 @@
  1. Clone the repository
 
 ```
-   git clone git@github.com:DevOfFuture/git@github.com:DevOfFuture/DevDic.git
+   git clone git@github.com:DevOfFuture/DevDic.git
 ```
 
  2. Install dependencies
