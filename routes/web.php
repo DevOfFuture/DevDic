@@ -27,7 +27,9 @@ $router->group(['prefix' => 'admin'], function () use ($router) {
     $router->get('/add_language', 'AdminController@show');
     $router->get('/list_languages', 'AdminController@show_all');
     $router->post('/add_language', 'AdminController@store');
-    $router->get('/edit_language', 'AdminController@editLanguage');
+
+    $router->get('/edit_language/{id}', 'AdminController@edit');
+    $router->post('/edit_language', 'AdminController@update');
 });
 
 

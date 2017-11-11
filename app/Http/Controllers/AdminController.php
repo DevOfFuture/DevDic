@@ -41,7 +41,7 @@ class AdminController extends Controller
 
                 $result = Language::create( $request->all() );
 
-                $status = "Profile updated!";
+                $status = "Language Created!";
             }
 
             return view("admin.add_language", ["status" =>  ($status) ? $status : 'Error Occured']);
@@ -63,18 +63,29 @@ class AdminController extends Controller
         return view("admin.all_language", ["data" => $data] );
     }
 
-    public function edit(Request $request)
+    public function edit($id)
     {
-        $data = $request->all();
-        
-        return "fisher please go away";
+        $language = Language::where('id', $id)->first();
+
+        return view("admin.edit_language", ["data" => $language] );
     }
 
     public function update(Request $request)
     {
-        $data = $request->all();
-        
-        return "fisher please go away";
+        $status = "";
+
+        if( $request->isMethod('post') ){
+           
+            if( Language::where('id', $request->input('id'))->update( $request->all() ) ){
+
+                $status = "Language updated!";
+            }
+
+            $language = Language::where('id', $request->input('id') )->first();
+
+            return view("admin.edit_language", ["status" =>  ($status) ? $status : 'Error Occured', "data" => $language ]);
+        }
+
     }
 
     public function destroy(Request $request)

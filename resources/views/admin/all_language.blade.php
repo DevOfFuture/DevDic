@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Page Title')
+@section('title', 'All Languages')
 
 
 @section('content')
