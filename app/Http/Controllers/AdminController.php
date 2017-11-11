@@ -28,7 +28,7 @@ class AdminController extends Controller
     {
         $data = $request->all();
         
-        return view("admin.add_language", []);
+        return view("admin.language.add_language", []);
     }
 
     public function store(Request $request)
@@ -44,7 +44,7 @@ class AdminController extends Controller
                 $status = "Language Created!";
             }
 
-            return view("admin.add_language", ["status" =>  ($status) ? $status : 'Error Occured']);
+            return view("admin.language.add_language", ["status" =>  ($status) ? $status : 'Error Occured']);
         }
     }
 
@@ -52,7 +52,7 @@ class AdminController extends Controller
     {
         $data = $request->all();
         
-        return view("admin.add_language", []);
+        return view("admin.language.add_language", []);
     }
 
     
@@ -60,14 +60,14 @@ class AdminController extends Controller
     {
         $data = Language::all();
   
-        return view("admin.all_language", ["data" => $data] );
+        return view("admin.language.all_language", ["data" => $data] );
     }
 
     public function edit($id)
     {
         $language = Language::where('id', $id)->first();
 
-        return view("admin.edit_language", ["data" => $language] );
+        return view("admin.language.edit_language", ["data" => $language] );
     }
 
     public function update(Request $request)
@@ -83,7 +83,7 @@ class AdminController extends Controller
 
             $language = Language::where('id', $request->input('id') )->first();
 
-            return view("admin.edit_language", ["status" =>  ($status) ? $status : 'Error Occured', "data" => $language ]);
+            return view("admin.language.edit_language", ["status" =>  ($status) ? $status : 'Error Occured', "data" => $language ]);
         }
 
     }
