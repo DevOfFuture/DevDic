@@ -43,13 +43,27 @@ class FbMessengerHelper extends Helper
         return $response;
 
     }
+    
+    /**
+     * Available command required we are expection from facebook
+     *
+     * @param  integer $id
+     * @param  string  $response
+     * @return array
+     */
+    public static function commands()
+    {
+      return [
+        "language", "facebook", "library", "help"
+      ];
+    }
 
     /**
      * Post a message to the Facebook messenger API.
      *
      * @param  integer $id
-     * @param  string  $response
-     * @return bool
+     * @param  array  $response
+     * @return array
      */
     public static function replyMessage($id, $response)
     {
@@ -74,8 +88,8 @@ class FbMessengerHelper extends Helper
     /**
      * Gets User commands and decide which endpoint it should call
      *
-     * @param  string  $command
-     * @return bool
+     * @param  array  $command
+     * @return array
      */
     public static function commandMatcher($command)
     {
@@ -99,6 +113,10 @@ class FbMessengerHelper extends Helper
                 $result = self::frameworkMatcher($commands);
                 break;
 
+            case 'help':
+                $result = self::helpMatcher($commands);
+                break;
+
             case 'extension':
                 # code...
                 break;
@@ -114,8 +132,8 @@ class FbMessengerHelper extends Helper
     /**
      * Gets User commands and decide which route it should goto
      *
-     * @param  string  $command
-     * @return bool
+     * @param  arrau  $command
+     * @return array
      */
     public static function languageMatcher($commands = [])
     {
@@ -174,8 +192,8 @@ class FbMessengerHelper extends Helper
     /**
      * Gets User commands and decide which route it should goto
      *
-     * @param  string  $command
-     * @return bool
+     * @param  arrau  $command
+     * @return array
      */
     public static function frameworkMatcher($commands = [])
     {
@@ -219,8 +237,8 @@ class FbMessengerHelper extends Helper
     /**
      * Gets User commands and decide which route it should goto
      *
-     * @param  string  $command
-     * @return bool
+     * @param  array  $command
+     * @return array
      */
     public static function libraryMatcher($commands = [])
     {
@@ -258,6 +276,41 @@ class FbMessengerHelper extends Helper
                 # code...
                 break;
             }
+
+        return $result;
+    }
+
+     /**
+     * Matcher for Help command
+     *
+     * @param  array  $command
+     * @return array
+     */
+    public static function helpMatcher($commands = [])
+    {
+        global $app;
+        
+        $result  = ["data" => [], "filter"=> [] ];
+        
+        if($commands[0] == "help"){
+           
+           $result  = [
+                       "data" => [
+                          "help"=>"
+                             ```
+                              Commands Available:
+                                 *language*
+                                    - language {language}
+                                    - language {language} tutorials
+                                    - language {language} frameworks
+                                    - language {language} libraries
+                                    - language {language} extension
+                             ```
+                          "
+                        ], 
+                       "filter"=> ["help"] 
+           ];
+        }
 
         return $result;
     }

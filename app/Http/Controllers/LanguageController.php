@@ -70,7 +70,7 @@ class LanguageController extends Controller
         if( ! $language_id ) { return ""; } //fix this later, should return a json #TODO
 
         $tutorials = Language::find($language_id->id)
-                          ->tutorials()->get(["name", "tutorial_link"])->toArray();
+                             ->tutorials()->get(["name", "tutorial_link"])->toArray();
         $pre_tutorial = "";
         
         foreach ($tutorials as $key => $value) {
@@ -104,7 +104,7 @@ class LanguageController extends Controller
         if( ! $language_id ) { return ""; } //fix this later, should return a json #TODO
 
         $libraries = Language::find($language_id->id)
-                          ->tutorials()->get(["name"])->toArray();
+                             ->tutorials()->get(["name"])->toArray();
         $pre_libraries = "";
         
         foreach ($libraries as $key => $value) {
@@ -125,7 +125,7 @@ class LanguageController extends Controller
         if( ! $language_id ) { return ""; } //fix this later, should return a json #TODO
 
         $frameworks = Language::find($language_id->id)
-                             ->frameworks()->get(["name"])->toArray();
+                              ->frameworks()->get(["name"])->toArray();
         $pre_frameworks = "";
         
         foreach ($frameworks as $key => $value) {
