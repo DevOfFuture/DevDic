@@ -22,14 +22,28 @@ $router->get('/', function () use ($router) {
 
 $router->group(['prefix' => 'admin'], function () use ($router) {
     
-    $router->get('/', 'AdminController@index');
-    $router->get('/languages', 'AdminController@showLanguages');
-    $router->get('/add_language', 'AdminController@show');
-    $router->get('/list_languages', 'AdminController@show_all');
-    $router->post('/add_language', 'AdminController@store');
+    $router->get('/', 'AdminLanguageController@index');
 
-    $router->get('/edit_language/{id}', 'AdminController@edit');
-    $router->post('/edit_language', 'AdminController@update');
+
+    $router->get('/languages', 'AdminLanguageController@showLanguages');
+    $router->get('/add_language', 'AdminLanguageController@show');
+    $router->get('/list_languages', 'AdminLanguageController@show_all');
+    $router->post('/add_language', 'AdminLanguageController@store');
+
+    $router->get('/edit_language/{id}', 'AdminLanguageController@edit');
+    $router->post('/edit_language', 'AdminLanguageController@update');
+
+
+    //===
+    // Admin Edit Framework Route
+    //===
+    $router->get('/frameworks', 'AdminFrameworkController@showFrameworks');
+    $router->get('/add_framework', 'AdminFrameworkController@show');
+    $router->get('/list_frameworks', 'AdminFrameworkController@show_all');
+    $router->post('/add_framework', 'AdminFrameworkController@store');
+
+    $router->get('/edit_framework/{id}', 'AdminFrameworkController@edit');
+    $router->post('/edit_framework', 'AdminFrameworkController@update');
 });
 
 
