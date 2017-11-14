@@ -19,6 +19,36 @@ class FbMessengerHelper extends Helper
         //
         global $app;
     }
+    
+    //==
+    // List of available commands
+    //==
+    public static function availableCommands()
+    {
+        return "
+Commands Available:
+```
+- language {language}
+- language {language} tutorials
+- language {language} frameworks
+- language {language} libraries
+- language {language} extension
+
+- framework {framework}
+- framework {framework} tutorials
+- framework {framework} frameworks
+- framework {framework} libraries
+- framework {framework} extension
+
+- library {library}
+- library {library} tutorials
+- library {library} frameworks
+- library {library} libraries
+- library {library} extension
+
+eg: language php```
+";
+    }
 
     //==
     // Sends message to user
@@ -296,17 +326,7 @@ class FbMessengerHelper extends Helper
            
            $result  = [
                        "data" => [
-                          "help"=>"
-                             ```
-                              Commands Available:
-                                 *language*
-                                    - language {language}
-                                    - language {language} tutorials
-                                    - language {language} frameworks
-                                    - language {language} libraries
-                                    - language {language} extension
-                             ```
-                          "
+                          "help"=> self::availableCommands()
                         ], 
                        "filter"=> ["help"] 
            ];
