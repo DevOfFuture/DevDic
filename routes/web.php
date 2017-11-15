@@ -15,6 +15,15 @@ $router->get('/', function () use ($router) {
     return "Welcome to DevDic! :)";
 });
 
+//===
+// Route for documentation
+//===
+
+$router->get('/docu', function () use ($router) {
+    return view("doc/index");
+});
+
+
 
 //===
 // Routes to Admin

@@ -162,7 +162,7 @@ eg: language php```
     /**
      * Gets User commands and decide which route it should goto
      *
-     * @param  arrau  $command
+     * @param  array  $command
      * @return array
      */
     public static function languageMatcher($commands = [])
