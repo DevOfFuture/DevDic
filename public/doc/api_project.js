@@ -3,7 +3,7 @@ define({
   "version": "0.1.0",
   "description": "Documentation for the devdic API",
   "title": "Custom apiDoc browser title",
-  "url": "http://devdic.herokuapp.com/",
+  "url": "http://devdic.herokuapp.com",
   "sampleUrl": false,
   "defaultVersion": "0.0.0",
   "apidoc": "0.3.0",

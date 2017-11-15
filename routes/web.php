@@ -19,7 +19,7 @@ $router->get('/', function () use ($router) {
 // Route for documentation
 //===
 
-$router->get('/docu', function () use ($router) {
+$router->get('/documentation', function () use ($router) {
     return view("doc/index");
 });
 
