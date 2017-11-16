@@ -19,7 +19,7 @@
 
 Head over to the [documentation page](devdic.herokuapp.com/documentation) for available endpoints.
 
-### Setting up the project
+## Setting up the project
 
 #### Requiremets:
 
