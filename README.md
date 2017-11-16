@@ -17,7 +17,7 @@
   
 ## Want to use this API?
 
-Head over to the [documentation page](devdic.herokuapp.com/documentation) for available endpoints.
+Head over to the [documentation page](http://devdic.herokuapp.com/documentation) for available endpoints.
 
 ## Setting up the project
 
