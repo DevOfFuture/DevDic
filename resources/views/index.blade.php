@@ -21,20 +21,20 @@
 
         <h3>Use case 1: </h3>
             <ul>
-                 <li>Head to the bot messenger page <a href="https://www.messenger.com/t/devdic"> devdic </a>. and start interacting with the bot.</li>
+                 <li>Head to the bot messenger page <a href="https://www.messenger.com/t/devdic"> devdic </a> and start interacting with the bot.</li>
             </ul>
 
         <h3>Use case 2:</h3>
            <ul>
-            <li>First, go to facebook and search for `devdic`(devdic is the name of the bot). Once located, click on it. </li>
+            <li>First, go to facebook and search for <code>devdic</code>(devdic is the name of the bot). Once located, click on it. </li>
                 <ul>
                 - There are number of commands you can use to interact with the bot (example): 
-                    <li> * `language php` </li>
+                    <li> <code>language php</code> </li>
                      <li>This command will show details about PHP and will bring out a number of good links to learn about PHP.</li>
-                     <li> * `language php extension` </li>
-                   This command will show PHP extension - `.php`
+                     <li> <code>language php extension</code> </li>
+                   This command will show PHP extension - <code>.php</code>
      
-                   To find out more about other commands, you can use to interact with the bot, type `help` and submit.
+                   To find out more about other commands, you can use to interact with the bot, type <code>help</code> and submit.
                 </ul>
            </ul>
 
