@@ -7,7 +7,7 @@
 
 ### Use case 1:
 
-- First, go to facebook and seearch for `devdic`(devdic is the name of the bot). Once located, click on it.
+- First, go to facebook and search for `devdic`(devdic is the name of the bot). Once located, click on it.
 
 - There are number of commands you can use to interact with the bot (example): 
   * `language php`
