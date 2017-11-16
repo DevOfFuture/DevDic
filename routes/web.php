@@ -23,6 +23,13 @@ $router->get('/documentation', function () use ($router) {
     return view("doc/index");
 });
 
+//===
+// Route for privacy policy
+//===
+
+$router->get('/privacy', function () use ($router) {
+    return view("privacy");
+});
 
 
 //===
