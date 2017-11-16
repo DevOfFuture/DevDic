@@ -12,7 +12,7 @@
 */
 
 $router->get('/', function () use ($router) {
-    return "Welcome to DevDic! :)";
+    return view("index");
 });
 
 //===
