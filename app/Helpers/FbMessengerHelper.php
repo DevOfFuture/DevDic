@@ -36,16 +36,15 @@ Commands Available:
 
 - framework {framework}
 - framework {framework} tutorials
-- framework {framework} frameworks
-- framework {framework} libraries
+- framework {framework} articles
 - framework {framework} extension
 
 - library {library}
 - library {library} tutorials
 - library {library} frameworks
-- library {library} libraries
 - library {library} extension
 
+- library {library} frameworks
 eg: language php```
 ";
     }
