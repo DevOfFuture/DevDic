@@ -1,9 +1,11 @@
-﻿# DevDic
+# DevDic
 
 > DevDic is a programming dictionary for Developers by Developers. This Bot can teach you almost everything about almost 
 > any programming language by showing you the language meaning and also suggest good important links/tutorials to learn.
 
 ## How to use
+
+### Use case 1:
 
 - First, go to facebook and seearch for `devdic`(devdic is the name of the bot). Once located, click on it.
 
@@ -13,9 +15,14 @@
   * `language php extension`
      This command will show PHP extension - `.php`
      
-  To find out more about other commands you can use to interact with the bot, type `help` and submit.
-  
-## Want to use this API?
+  To find out more about other commands, you can use to interact with the bot, type `help` and submit.
+
+
+### Use case 2:
+
+  * Head to the bot messenger page [here](https://www.messenger.com/t/devdic).
+
+## Want to use our API?
 
 Head over to the [documentation page](http://devdic.herokuapp.com/documentation) for available endpoints.
 
