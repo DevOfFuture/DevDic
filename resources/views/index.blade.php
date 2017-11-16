@@ -13,11 +13,6 @@
 
      <div class="jumbotron"> 
         <h2> How to use </h3>
-        <ul>
-            <li> Goto <a href="https://facebook.com/">facebook.com</a> and serach for <code>@devdic</code> </li>
-            <li>Click on the bot - <code>@devdic</code> </li>
-            <li> Start interacting with the bot! (To get available command, type "help" and submit)</code> </li>
-        </ul>
 
         <h3>Use case 1: </h3>
             <ul>
