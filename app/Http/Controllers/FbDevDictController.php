@@ -72,7 +72,10 @@ class FbDevDictController extends Controller
                 }
             }
             else{
-                   FbMessengerHelper::replyMessage($sender_id, "Sorry, there is no information about this language on our database yet.");
+                  if( in_array(strtolower(explode(' ', $message)[0]), ["language", "library", "framework"]) ){
+
+                      FbMessengerHelper::replyMessage($sender_id, "I'm always updating my database, I could not find what you are looking for at this time, I have added this to the top of my list, I'll add it soon!. Type 'help' if you want to see available command you can use to interact with me.");
+                  }
             }
        }
 
