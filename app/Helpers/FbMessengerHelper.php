@@ -44,8 +44,13 @@ Commands Available:
 - library {library} frameworks
 - library {library} extension
 
-- library {library} frameworks
-eg: language php```
+eg: language php
+    language php tutorials
+    language php extension
+    etc...
+Note: Replace {language} with the language name you want to look up,
+same goes with {framework} and {library}.
+```
 ";
     }
 
