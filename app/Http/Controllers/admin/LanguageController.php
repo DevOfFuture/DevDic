@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
-use App\Framework;
+use App\Language;
+use App\Http\Controllers\Controller;
 
-class AdminFrameworkController extends Controller
+class LanguageController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -28,7 +29,7 @@ class AdminFrameworkController extends Controller
     {
         $data = $request->all();
         
-        return view("admin.framework.add_framework", []);
+        return view("admin.language.add_language", []);
     }
 
     public function store(Request $request)
@@ -37,14 +38,14 @@ class AdminFrameworkController extends Controller
 
         if( $request->isMethod('post') ){
         
-            if( ! Framework::where('name', $request->input('name'))->count() ){
+            if( ! Language::where('name', $request->input('name'))->count() ){
 
-                $result = Framework::create( $request->all() );
+                $result = Language::create( $request->all() );
 
                 $status = "Language Created!";
             }
 
-            return view("admin.framework.add_framework", ["status" =>  ($status) ? $status : 'Error Occured']);
+            return view("admin.language.add_language", ["status" =>  ($status) ? $status : 'Error Occured']);
         }
     }
 
@@ -52,22 +53,22 @@ class AdminFrameworkController extends Controller
     {
         $data = $request->all();
         
-        return view("admin.framework.add_framework", []);
+        return view("admin.language.add_language", []);
     }
 
     
     public function show_all()
     {
-        $data = Framework::all();
+        $data = Language::all();
   
-        return view("admin.framework.all_framework", ["data" => $data] );
+        return view("admin.language.all_language", ["data" => $data] );
     }
 
     public function edit($id)
     {
-        $language = Framework::where('id', $id)->first();
+        $language = Language::where('id', $id)->first();
 
-        return view("admin.framework.edit_framework", ["data" => $language] );
+        return view("admin.language.edit_language", ["data" => $language] );
     }
 
     public function update(Request $request)
@@ -76,14 +77,14 @@ class AdminFrameworkController extends Controller
 
         if( $request->isMethod('post') ){
            
-            if( Framework::where('id', $request->input('id'))->update( $request->all() ) ){
+            if( Language::where('id', $request->input('id'))->update( $request->all() ) ){
 
                 $status = "Language updated!";
             }
 
-            $language = Framework::where('id', $request->input('id') )->first();
+            $language = Language::where('id', $request->input('id') )->first();
 
-            return view("admin.framework.edit_framework", ["status" =>  ($status) ? $status : 'Error Occured', "data" => $language ]);
+            return view("admin.language.edit_language", ["status" =>  ($status) ? $status : 'Error Occured', "data" => $language ]);
         }
 
     }
