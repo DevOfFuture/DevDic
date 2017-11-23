@@ -41,7 +41,7 @@ Commands Available:
 
 - library {library}
 - library {library} tutorials
-- library {library} frameworks
+- library {library} articles
 - library {library} extension
 
 eg: language php
@@ -197,12 +197,17 @@ same goes with {framework} and {library}.
                     $result  = $app->dispatch($request)->getContent();
                     $result  = array_get(json_decode($result, true), "data");
                     $result  = ["data" => $result, "filter" => ["name", (strtolower($commands[1]) == "libraries") ? "libraries": "frameworks"] ];
-
                 }
                 else if( (strtolower($commands[1]) == "tutorials") OR (strtolower($commands[1]) == "articles") ){
                     $request = Request::create("/languages/{$commands[0]}/{$commands[1]}", "GET");           
                     $result  = $app->dispatch($request)->getContent(); 
                     $result  = array_get(json_decode($result, true), "data");
+                    //If no tutorials found, inform the user that we don't have it yet.
+
+                    if( ! $result ){
+                      $result["tutorials"] = "Sorry, I could not find tutorial for this language. Don't worry, I've added this to my priority list, I'll add it asap!";
+                    }
+
                     $result  = ["data" => $result, "filter"=> ["name", "tutorials"] ];
                 }
                 else{
