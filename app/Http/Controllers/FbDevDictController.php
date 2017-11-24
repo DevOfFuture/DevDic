@@ -32,7 +32,7 @@ class FbDevDictController extends Controller
     
     public function verify(Request $request)
     {
-       // TODO: make sure request is comming from facebook
+       // TODO: make sure request is comming from facebook. 
        
        if( $request->get('hub_mode') == 'subscribe' ){
           
