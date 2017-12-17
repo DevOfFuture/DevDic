@@ -70,7 +70,7 @@ class LanguageController extends Controller
         if( ! $language_id ) { return ""; } //fix this later, should return a json #TODO
 
         $tutorials = Language::find($language_id->id)
-                             ->tutorials()->get(["name", "tutorial_link"])->limit(10)->toArray();
+                             ->tutorials()->take(10)->get(["name", "tutorial_link"])->toArray();
         $pre_tutorial = "";
 
         foreach ($tutorials as $key => $value) {
