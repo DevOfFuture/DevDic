@@ -66,13 +66,13 @@ class LanguageController extends Controller
     {
         
         $language_id = Language::where('is_active', 1)->where('name', $language)->first(['id']);
-        
+
         if( ! $language_id ) { return ""; } //fix this later, should return a json #TODO
 
         $tutorials = Language::find($language_id->id)
-                             ->tutorials()->get(["name", "tutorial_link"])->toArray();
+                             ->tutorials()->get(["name", "tutorial_link"])->limit(10)->toArray();
         $pre_tutorial = "";
-        
+
         foreach ($tutorials as $key => $value) {
             $pre_tutorial .= $value['name'] . '-' .$value['tutorial_link'] . ",
 
