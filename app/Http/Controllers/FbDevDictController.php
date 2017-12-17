@@ -63,7 +63,7 @@ class FbDevDictController extends Controller
             $result = array_get($data, "data", []);
 
             $filter = array_get($data, "filter", []);
-            
+
             if( count($result) > 0 ){
                 foreach( $filter as $key ){
                     if( $value = array_get($result, $key) ){
